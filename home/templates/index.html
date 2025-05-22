@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adhyayan Coaching Institute</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: #111827;
+        }
+        .glass {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.sticky {
+            background-color: #f9fafb;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .hero-title {
+            font-weight: 800;
+        }
+        .glow-button {
+            background: #000000;
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+        .glow-button:hover {
+            background: #1f2937;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        nav a {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: black;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+        .course-card {
+            background: #f9fafb;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-extrabold text-black cursor-pointer select-none">Adhyayan Coaching Institute</h1>
+        <nav class="hidden md:flex gap-6 text-gray-700 font-medium">
+            <a href="#home" class="hover:text-black transition active">Home</a>
+            <a href="{% url 'index' %}" class="hover:text-black transition">Courses</a>
+            <a href="{% url 'about' %}" class="hover:text-black transition">About</a>
+            <a href="{% url 'topper1' %}" class="hover:text-black transition">Toppers</a>
+            <a href="" class="hover:text-black transition">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center text-center px-6 bg-white relative">
+    <div class="hero-content max-w-3xl" data-aos="fade-up">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-black hero-title mb-4">
+            <span id="typed"></span>
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-700 mb-8">
+            Join <span class="text-black font-semibold">Adhyayan Coaching Institute</span> for IIT-JEE, NEET & Olympiad excellence.
+        </p>
+        <a href="#courses" class="inline-block px-8 py-3 glow-button rounded-full text-lg font-semibold">Explore Courses</a>
+    </div>
+</section>
+
+<!-- Courses Section -->
+<section id="courses" class="py-20 max-w-7xl mx-auto px-6 sm:px-12">
+    <h3 class="text-3xl font-extrabold text-black text-center mb-12" data-aos="fade-up">Our Popular Courses</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for cou in courses %}
+        <div class="course-card" data-aos="zoom-in" data-aos-delay="100">
+            <h4 class="text-xl font-bold mb-3">{{ cou.course_name }}</h4>
+            <p class="text-gray-700 mb-4">{{ cou.course_description }}</p>
+            <a href="course/">
+            <button class="glow-button px-4 py-2 rounded-full font-semibold"> Learn More </button>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+<!-- Toppers Section -->
+<section id="toppers" class="py-20 max-w-7xl mx-auto px-6 sm:px-12 bg-gray-50">
+    <h3 class="text-3xl font-extrabold text-black text-center mb-12" data-aos="fade-up">Our Toppers</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {% for top in toppers %}
+        <div class="course-card text-center" data-aos="flip-left" data-aos-delay="100">
+            <img src="{{ top.image_url }}" alt="Toppers" class="w-32 h-32 mx-auto rounded-full mb-4 shadow-lg" />
+            <h4 class="text-xl font-semibold text-black">{{ top.topper_name }}</h4>
+            <p class="text-gray-500">{{ top.topper_course }}</p>
+
+        </div>
+    {% endfor %}
+
+
+
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 max-w-7xl mx-auto px-6 sm:px-12">
+    <h3 class="text-3xl font-extrabold text-black text-center mb-12" data-aos="fade-up">Get in Touch</h3>
+    <form class="max-w-3xl mx-auto space-y-6" data-aos="fade-up" data-aos-delay="150">
+        <input type="text" placeholder="Your Name" required class="w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black" />
+        <input type="email" placeholder="Your Email" required class="w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black" />
+        <textarea rows="4" placeholder="Your Message" required class="w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"></textarea>
+        <button type="submit" class="glow-button px-6 py-3 rounded-full font-semibold text-lg w-full sm:w-auto">Send Message</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Adhyayan Coaching Institute. All rights reserved.</p>
+</footer>
+
+<!-- Scripts -->
+<script>
+    AOS.init({ once: true, duration: 900 });
+
+    const typed = new Typed("#typed", {
+        strings: [
+            "Empowering Every Student",
+            "Crack IIT-JEE & NEET",
+            "Rise with Adhyayan Coaching Institute"
+        ],
+        typeSpeed: 60,
+        backSpeed: 30,
+        backDelay: 1800,
+        loop: true
+    });
+
+    // Sticky header
+    window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 30) navbar.classList.add("sticky");
+        else navbar.classList.remove("sticky");
+    });
+</script>
+</body>
+</html>
