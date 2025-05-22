@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--s=x_d-&0kh4jclmn!ikgtz(kum6@$1e@ep&k5f5we%@5!pl=_
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['your-service-name.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['https://adhyayan-coaching-institute-2.onrender.com/', 'localhost']
 
 # Application definition
 
