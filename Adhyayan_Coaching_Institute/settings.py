@@ -26,7 +26,14 @@ SECRET_KEY = 'django-insecure--s=x_d-&0kh4jclmn!ikgtz(kum6@$1e@ep&k5f5we%@5!pl=_
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['https://adhyayan-coaching-institute-2.onrender.com/', 'localhost']
+
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
+ALLOWED_HOSTS = ['localhost']
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 # Application definition
 
