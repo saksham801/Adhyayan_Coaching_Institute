@@ -44,7 +44,7 @@
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'index' %}">Courses</a>
             <a href="{% url 'topper1' %}">Toppers</a>
-            <a href="#contact">Contact</a>
+            <a href="{% url 'cont' %}">Contact</a>
         </nav>
         <button id="mobile-menu-button" class="md:hidden text-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,10 +54,9 @@
     </div>
     <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 text-gray-800 bg-gray-100">
         <a href="{% url 'home' %}" class="block py-2 hover:text-black">Home</a>
-        <a href="course.html" class="block py-2 hover:text-black">Courses</a>
-        <a href="about2.html" class="block py-2 hover:text-black">About</a>
-        <a href="#toppers" class="block py-2 hover:text-black">Toppers</a>
-        <a href="#contact" class="block py-2 hover:text-black">Contact</a>
+        <a href="{% url 'index' %}" class="block py-2 hover:text-black">Courses</a>
+        <a href="{% url 'topper1' %}" class="block py-2 hover:text-black">Toppers</a>
+        <a href="{% url 'cont' %}" class="block py-2 hover:text-black">Contact</a>
     </div>
 </header>
 

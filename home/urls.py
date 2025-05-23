@@ -23,4 +23,5 @@ urlpatterns = [
     path('',views.Home,name='home'),
     path('about/',include('about.urls')),
     path('topper/',include('topper.urls')),
+    path('contact/',include('contact.urls')),
 ]
