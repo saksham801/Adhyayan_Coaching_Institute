@@ -63,12 +63,16 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github'
+    'allauth.socialaccount.providers.github',
+    'social_django',
 
 
 ]
 
-AUTHENTICATION_BACKENDS = ['allauth.account.auth_backends.AuthenticationBackend',]
+AUTHENTICATION_BACKENDS = ['allauth.account.auth_backends.AuthenticationBackend',
+                           'social_core.backends.google.GoogleOAuth2',
+                           'django.contrib.auth.backends.ModelBackend',
+                           ]
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -79,7 +83,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware'
+    'allauth.account.middleware.AccountMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware'
 ]
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 

@@ -175,3 +175,27 @@ def send_and_store_otp(request, email):
 
     return True
 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from social_django.models import UserSocialAuth
+
+@login_required
+def get_data1(request):
+    user = request.user
+    name = user.get_full_name()
+    email = user.email
+
+    try:
+        google_login = user.social_auth.get(provider='google-oauth2')
+        extra_data = google_login.extra_data
+        picture = extra_data.get('picture')
+    except UserSocialAuth.DoesNotExist:
+        picture = None
+        extra_data = {}
+
+    return render(request, 'otp1.html', {
+        'name': name,
+        'email': email,
+        'picture': picture,
+        'extra_data': extra_data,
+    })

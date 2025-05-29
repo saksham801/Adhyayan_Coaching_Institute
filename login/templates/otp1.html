@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Welcome, {{ name }}</h1>
+<p>Email: {{ email }}</p>
+
+{% if picture %}
+  <img src="{{ picture }}" alt="Google Picture" style="width:100px;" />
+{% else %}
+  <p>No profile picture found or you didn't use Google login.</p>
+{% endif %}
+
+</body>
+</html>

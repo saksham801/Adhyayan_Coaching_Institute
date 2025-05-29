@@ -21,6 +21,7 @@ from login import views
 
 urlpatterns = [
    path('',views.login,name='login'),
+   path('get_data/',views.get_data1,name='get_data'),
 
 
 ]
