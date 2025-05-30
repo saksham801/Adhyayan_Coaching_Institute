@@ -92,9 +92,19 @@
                 <a href="{% url 'topper1' %}">Toppers</a>
                 <a href="{% url 'cont' %}">Contact</a>
             </nav>
-            <a href="{% url 'login' %}">
-                <button class="glow-button">Login / Signup</button>
-            </a>
+            {% if user.is_authenticated %}
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-medium text-gray-700">Welcome, {{ user.username }}</span>
+                    <a href="{% url 'dashboard' %}">
+                        <button class="glow-button">Dashboard</button>
+                    </a>
+                </div>
+
+            {% else %}
+                <a href="{% url 'login' %}">
+                    <button class="glow-button">Login / Signup</button>
+                </a>
+            {% endif %}
         </div>
 
         <!-- Mobile Menu Button -->
@@ -112,9 +122,18 @@
         <a href="{% url 'about' %}" class="block py-2 hover:text-black">About</a>
         <a href="{% url 'topper1' %}" class="block py-2 hover:text-black">Toppers</a>
         <a href="{% url 'cont' %}" class="block py-2 hover:text-black">Contact</a>
-        <a href="{% url 'login' %}" class="block mt-2 py-2">
-            <button class="glow-button w-full">Login / Signup</button>
-        </a>
+        {% if user.is_authenticated %}
+            <div class="mt-2 text-sm text-gray-800">
+                Welcome, {{ user.username }}
+            </div>
+            <a href="{% url 'dashboard' %}" class="block mt-2 py-2">
+                <button class="glow-button w-full">Dashboard</button>
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}" class="block mt-2 py-2">
+                <button class="glow-button w-full">Login / Signup</button>
+            </a>
+        {% endif %}
     </div>
 </header>
 
