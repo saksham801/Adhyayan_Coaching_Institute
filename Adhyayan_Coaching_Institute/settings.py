@@ -34,7 +34,7 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
-ALLOWED_HOSTS = ['localhost','https://adhyayan-coaching-institute-2.onrender.com','127.0.0.1',".vercel.app","https://web-production-cf0fe.up.railway.app/"]
+ALLOWED_HOSTS = ["*"]
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
