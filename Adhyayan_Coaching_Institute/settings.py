@@ -184,8 +184,8 @@ EMAIL_HOST_PASSWORD = 'dfnfoasnifvnhzwt'
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '306093176492-1ur29oqsi4pr0oq8dgsg3gc4anvme67b.apps.googleusercontent.com',
-            'secret': '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'
+            'client_id': '1049203314891-kd9t03ndehnmeth4266k44idkdlhep1v.apps.googleusercontent.com',
+            'secret': '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'
         },
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
