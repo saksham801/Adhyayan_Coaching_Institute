@@ -34,7 +34,7 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*",'adhyayan-coaching-institute.up.railway.app']
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
@@ -201,3 +201,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGIN_REDIRECT_URL = 'home'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '306093176492-1ur29oqsi4pr0oq8dgsg3gc4anvme67b.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://adhyayan-coaching-institute.up.railway.app/accounts/google/login/callback/'
