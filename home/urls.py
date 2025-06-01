@@ -27,4 +27,5 @@ urlpatterns = [
     path('successjskfjfldjfdksfj/',views.success,name='suc'),
     path('login/',include('login.urls')),
     path('dashboard/',include('dashboard.urls')),
+    path('test1/',views.test1,name='test1')
 ]

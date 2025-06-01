@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 
 import home,time
@@ -19,6 +20,9 @@ def Home(request):
         time.sleep(3)
         return redirect(success)
 
+
+def test1(request):
+    return HttpResponse("Success")
 
 
 
