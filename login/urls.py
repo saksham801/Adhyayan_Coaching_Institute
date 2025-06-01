@@ -24,4 +24,5 @@ urlpatterns = [
    path('get_data/',views.get_data1,name='get_data'),
 
 
+
 ]

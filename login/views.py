@@ -12,6 +12,8 @@ import time
 from Emails import details
 import pymongo
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth import logout
+
 
 
 client = pymongo.MongoClient('mongodb+srv://dubeysaksham796:Iron_Man@adhyayancoachinginstitu.hqcuhrf.mongodb.net/?retryWrites=true&w=majority&appName=AdhyayanCoachingInstitute')

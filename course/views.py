@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
+
 from home.models import Course
 from database.course import course_name
 import pymongo
@@ -11,6 +13,7 @@ collection = db['course']
 
 
 # Create your views here.
+@csrf_protect
 def index(request):
     courses = Course.objects.all()
     user =list( collection.find())
