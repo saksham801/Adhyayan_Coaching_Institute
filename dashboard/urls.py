@@ -21,7 +21,8 @@ from dashboard import views
 
 urlpatterns = [
    path('',views.dashboard,name='dashboard'),
-   path('logout/',views.logout1,name='logout')
+   path('logout/',views.logout1,name='logout'),
+   path('get_message/',views.message,name='get_message')
 
 
 ]

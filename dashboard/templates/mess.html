@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Messages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f6fa;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .message-card {
+      background-color: #ffffff;
+      border-left: 6px solid #1b5e20;
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+
+    .message-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #1b5e20;
+    }
+
+    .message-card p {
+      margin: 4px 0;
+      color: #333;
+    }
+
+    .message-card small {
+      color: #777;
+    }
+
+    @media (max-width: 400px) {
+      body {
+        padding: 10px;
+      }
+
+      .message-card {
+        padding: 16px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Received Messages</h1>
+  <div class="container">
+    {% for messag in message %}
+    <div class="message-card">
+      <h3>{{ messag.name }}</h3>
+      <p><strong>Email:</strong> {{ messag.email }}</p>
+      <p><strong>Phone no:</strong> {{ messag.phone_no }}</p>
+      <p>{{ messag.message }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
