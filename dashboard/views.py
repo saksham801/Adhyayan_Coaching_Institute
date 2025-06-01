@@ -8,8 +8,9 @@ from django.views.decorators.csrf import csrf_protect
 @login_required
 @csrf_protect
 def dashboard(request):
+    allow_email = ['dubeysaksham796@gmail.com','dubeysaksham801@gmail.com','singhnidhi2713@gmail.com']
 
-    return render(request, 'dash.html')
+    return render(request, 'dash.html',{'allow_email':allow_email})
 
 @csrf_protect
 def logout1(request):

@@ -71,7 +71,7 @@
             <p class="text-gray-400">Track your test scores and improvements.</p>
             <a href="#" class="inline-block mt-4 glow-button">Check Performance</a>
         </div>
-        {% if user.email == "dubeysaksham796@gmail.com" %}
+        {% if user.email in allow_email %}
     <div class="card">
         <h3 class="text-xl font-semibold mb-2">Admin Panel</h3>
         <p class="text-gray-400">Access admin tools and insights.</p>
