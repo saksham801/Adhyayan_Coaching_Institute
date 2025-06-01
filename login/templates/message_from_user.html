@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - Messages</title>
   <style>
     body {
@@ -14,6 +15,7 @@
     h1 {
       text-align: center;
       color: #2c3e50;
+      margin-bottom: 20px;
     }
 
     .container {
@@ -25,11 +27,13 @@
 
     .message-card {
       background-color: #ffffff;
-      border-left: 6px solid #1b5e20; /* Green accent */
+      border-left: 6px solid #1b5e20;
       border-radius: 16px;
       padding: 20px;
-      width: 320px;
+      width: 100%;
+      max-width: 320px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
     }
 
     .message-card h3 {
@@ -46,28 +50,31 @@
     .message-card small {
       color: #777;
     }
+
+    @media (max-width: 400px) {
+      body {
+        padding: 10px;
+      }
+
+      .message-card {
+        padding: 16px;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>Received Messages</h1>
   <div class="container">
-    <!-- Message card 1 -->
-      {% for messag in message %}
+    {% for messag in message %}
     <div class="message-card">
-
       <h3>{{ messag.name }}</h3>
       <p><strong>Email:</strong> {{ messag.email }}</p>
-            <p><strong>Phone no:</strong> {{ messag.phone_no }}</p>
+      <p><strong>Phone no:</strong> {{ messag.phone_no }}</p>
       <p>{{ messag.message }}</p>
-
     </div>
-      {% endfor %}
-
-
-
-
-
+    {% endfor %}
   </div>
 
 </body>
