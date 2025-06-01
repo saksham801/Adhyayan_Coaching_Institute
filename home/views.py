@@ -21,8 +21,6 @@ def Home(request):
         return redirect(success)
 
 
-def test1(request):
-    return HttpResponse("Success")
 
 
 
