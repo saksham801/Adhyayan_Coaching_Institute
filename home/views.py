@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 
 import home,time
 from home.models import PopularCourse,Toppers,Newsettleer
+from database.message import message_data
 
 
 
@@ -15,9 +16,7 @@ def Home(request):
         name = request.POST['names']
         email = request.POST['emails']
         message = request.POST['message1']
-        data = Newsettleer(name = name, email = email, message = message)
-        data.save()
-        time.sleep(3)
+        message_data(name = name,email = email,message = message)
         return redirect(success)
 
 
