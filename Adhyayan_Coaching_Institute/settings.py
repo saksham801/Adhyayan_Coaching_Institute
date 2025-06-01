@@ -186,6 +186,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
             'client_id': '1049203314891-kd9t03ndehnmeth4266k44idkdlhep1v.apps.googleusercontent.com',
             'secret': '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'
+
         },
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
