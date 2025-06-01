@@ -10,6 +10,14 @@ import pymongo
 from django.contrib.auth.hashers import check_password
 import time
 from Emails import details
+import pymongo
+from django.views.decorators.csrf import csrf_protect
+
+
+client = pymongo.MongoClient('mongodb+srv://dubeysaksham796:Iron_Man@adhyayancoachinginstitu.hqcuhrf.mongodb.net/?retryWrites=true&w=majority&appName=AdhyayanCoachingInstitute')
+db = client['Adhyayan_Coaching_Institute']
+collection1 = db['contact']
+
 
 
 
@@ -19,6 +27,7 @@ collection = db['login_user']
 
 
 # Create your views here.
+@csrf_protect
 def login(request):
     if request.method == "POST":
         form_type = request.POST.get('form_type')
@@ -36,7 +45,8 @@ def login(request):
                     messages.success(request, 'You are logged in')
                     email1 = user_details.get('Emails')
                     details.sending_login(email=email1)
-                    return redirect('home')
+                    message = list(collection1.find())
+                    return render(request,'message_from_user.html',{'message':message})
                 else:
                     return render(request, 'incorrect.html')
             else:
@@ -82,7 +92,7 @@ def login(request):
 
 from django.contrib.auth.hashers import make_password, check_password
 
-
+@csrf_protect
 def send_and_store_otp(request, email):
     # 🚫 If email already exists, return early and don't store anything
     if collection.find_one({'Emails': email}):
@@ -180,6 +190,7 @@ from django.shortcuts import render
 from social_django.models import UserSocialAuth
 
 @login_required
+@csrf_protect
 def get_data1(request):
     user = request.user
     name = user.get_full_name()
