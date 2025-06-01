@@ -88,7 +88,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    'csrfmiddlewaretoken.CsrfMiddlewareToken'
+    'django.middleware.csrf.CsrfViewMiddleware'
+
 
 
 ]
