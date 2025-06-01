@@ -192,8 +192,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'github': {
         'APP': {
-            'client_id': 'Ov23liDy7YlazX0DgVHQ',
-            'secret': 'd1242ad550a3ecb896a6f8415085dd6046fc01e1'
+            'client_id': 'Ov23lioQjmS0eDBZgGaE',
+            'secret': '16f0076a69c60a076b71644ea483d37620ee291b'
         },
 
     }
