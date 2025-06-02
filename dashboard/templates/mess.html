@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin - Messages</title>
   <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-color: #161b22;
+      --text-color: #e6edf3;
+      --accent-color: #58a6ff;
+      --border-color: #30363d;
+    }
+
     body {
       margin: 0;
       padding: 20px;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f6fa;
+      background-color: var(--bg-color);
+      color: var(--text-color);
     }
 
     h1 {
       text-align: center;
-      color: #2c3e50;
+      color: var(--accent-color);
       margin-bottom: 20px;
+    }
+
+    .search-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .search-input {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 32px;
+      max-width: 400px;
+      width: 100%;
+      font-size: 16px;
+      color: var(--text-color);
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--border-color);
+      box-shadow: 0 0 12px rgba(88, 166, 255, 0.2);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .search-input:focus {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.4);
+      border-color: var(--accent-color);
     }
 
     .container {
@@ -26,29 +62,41 @@
     }
 
     .message-card {
-      background-color: #ffffff;
-      border-left: 6px solid #1b5e20;
+      background-color: var(--card-color);
+      border-left: 5px solid var(--accent-color);
       border-radius: 16px;
       padding: 20px;
       width: 100%;
-      max-width: 320px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box;
+      max-width: 340px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    .message-card:hover {
+      transform: translateY(-5px);
+      background-color: #1c2128;
     }
 
     .message-card h3 {
       margin-top: 0;
       margin-bottom: 10px;
-      color: #1b5e20;
+      color: var(--accent-color);
     }
 
     .message-card p {
       margin: 4px 0;
-      color: #333;
+      color: var(--text-color);
     }
 
     .message-card small {
-      color: #777;
+      color: #8b949e;
+    }
+
+    .highlight {
+      background-color: yellow;
+      color: black;
+      padding: 0 2px;
+      border-radius: 3px;
     }
 
     @media (max-width: 400px) {
@@ -66,16 +114,63 @@
 <body>
 
   <h1>Received Messages</h1>
-  <div class="container">
+
+  <div class="search-wrapper">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search messages..." />
+  </div>
+
+  <div class="container" id="messageContainer">
     {% for messag in message %}
     <div class="message-card">
-      <h3>{{ messag.name }}</h3>
-      <p><strong>Email:</strong> {{ messag.email }}</p>
-      <p><strong>Phone no:</strong> {{ messag.phone_no }}</p>
-      <p>{{ messag.message }}</p>
+      <h3 class="searchable">{{ messag.name }}</h3>
+      <p class="searchable"><strong>Email:</strong> {{ messag.email }}</p>
+      <p class="searchable"><strong>Phone no:</strong> {{ messag.phone_no }}</p>
+      <p class="searchable">{{ messag.message }}</p>
     </div>
     {% endfor %}
   </div>
+
+  <script>
+    const input = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".message-card");
+
+    function highlight(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query})`, "gi");
+      return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    input.addEventListener("input", () => {
+      const query = input.value.trim().toLowerCase();
+
+      cards.forEach(card => {
+        const searchableElements = card.querySelectorAll(".searchable");
+        let found = false;
+
+        searchableElements.forEach(el => {
+          const original = el.textContent;
+          const lower = original.toLowerCase();
+          if (lower.includes(query)) {
+            found = true;
+            el.innerHTML = highlight(original, query);
+          } else {
+            el.innerHTML = original; // remove previous highlights
+          }
+        });
+
+        card.style.display = found ? "block" : "none";
+      });
+    });
+  </script>
+
+  <!--
+    Optional: Server-side search (if dataset is huge)
+
+    <form method="GET" action="{% url 'home' %}" style="text-align:center;">
+      <input type="text" name="q" class="search-input" value="{{ request.GET.q }}" placeholder="Server search...">
+      <button type="submit">Search</button>
+    </form>
+  -->
 
 </body>
 </html>
