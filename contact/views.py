@@ -2,6 +2,9 @@ import time
 
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.hashers import make_password,check_password
+
+
 
 from contact.models import Contact
 from database.contact import contact_data
@@ -15,7 +18,8 @@ def contact1(request):
         email = request.POST['email']
         message = request.POST['message']
         no = request.POST['phone']
-        contact_data(name = name,email = email,phone_no = no,message = message,)
+        contact_data(name = name,email = email,phone_no = no,message = message)
+
         return redirect('suc')
 
 

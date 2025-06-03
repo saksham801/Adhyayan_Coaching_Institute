@@ -120,7 +120,7 @@
   </div>
 
   <div class="container" id="messageContainer">
-    {% for messag in message %}
+    {% for messag in message  %}
     <div class="message-card">
       <h3 class="searchable">{{ messag.name }}</h3>
       <p class="searchable"><strong>Email:</strong> {{ messag.email }}</p>
@@ -129,6 +129,17 @@
     </div>
     {% endfor %}
   </div>
+
+  <div class="container" id="messageContainer">
+    {% for messag2 in message2  %}
+    <div class="message-card">
+      <h3 class="searchable">{{ messag2.name }}</h3>
+      <p class="searchable"><strong>Email:</strong> {{ messag2.email }}</p>
+      <p class="searchable">{{ messag2.message }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
 
   <script>
     const input = document.getElementById("searchInput");
