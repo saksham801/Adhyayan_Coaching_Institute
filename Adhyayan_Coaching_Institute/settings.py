@@ -212,4 +212,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'https://adhyayan-coaching-institute.up.railway.app/accounts/google/login/callback/'
 
-CSRF_TRUSTED_ORIGINS = ['https://adhyayan-coaching-institute.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://adhyayan-coaching-institute.up.railway.app','http://127.0.0.1:8000']
